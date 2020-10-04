@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Sorting Visualiser</title>
+        <meta charset=UTF-8>
+        <link rel="stylesheet" href="css/styles.css">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+        <link href="https://fonts.googleapis.com/css2?family=Satisfy&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
+    </head>
+    <body>
+        <div class="body-div">
+            <div class="container-fluid">
+                <h1>Algorithm Visualizer</h1>
+                <div class="all-cont">
+                    <div class="row">
+                        <div class="col-lg-3">
+                            <div class="side-button">
+                                <button id="btn-0" class="custom-btn">Bubble Sort</button>
+                                <button id="btn-1" class="custom-btn">Insertion Sort</button>
+                                <button id="btn-2" class="custom-btn">Merge Sort</button>
+                                <button id="btn-3" class="custom-btn">Selection Sort</button>
+                                <button id="btn-4" class="custom-btn">Quick Sort</button>
+                                <button id="btn-5" class="custom-btn">Heap Sort</button>
+                            </div>
+                        </div>
+                        <div class="col-lg-9">
+                            <div id = "bars" class="board" style="display: flex;justify-content: space-around;align-items: center;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container setting-row">
+                <div class="row">
+                    <div class="col-lg-4">
+                        <div class="sliders">
+                            <input id="speed" type="range"   min="1" max="100" value="50" style="width:200px;"/>
+                            <label>Speed</label>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="sliders">
+                            <input type="range"  min="1" max="100" value="50"  id="frequency" style="width:200px;"/>
+                            <label>Frequency of Array</label>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="setting-btn">
+                            <button id="randomize" class = "btn btn-light">Randomize</button>
+                            <button id="sort" class="btn btn-light">Start Sorting</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+        <script>
+            function sleep(ms) {
+                return new Promise(resolve => setTimeout(resolve, parseFloat(ms)));
+            }
+            type = -1;
+        </script>
+        <script type="module">
+            import {randomize, speedToggle, frequencyToggle, sort, select} from "./js/sort.js";
+            window.onload = randomize();
+            window.addEventListener('load', ()=>{
+
+                for(let i = 0; i<=5; i++)
+                {
+                    $('#btn-'+i).click(()=>{select(i)});
+                }
+                $('#speed').on('input',(e)=>{speedToggle(e.target.value)});
+                $('#frequency').on('input',(e)=>{frequencyToggle(e.target.value)});
+                $('#randomize').click(()=>{randomize()});
+                $('#sort').click(()=>{sort()});
+            });
+        </script>
+    </body>
+</html>
