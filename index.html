@@ -62,7 +62,7 @@
         </script>
         <script type="module">
             import {randomize, speedToggle, frequencyToggle, sort, select} from "./js/sort.js";
-            window.onload = randomize();
+            window.onload = randomize();  //................On loading randomize array..........//
             window.addEventListener('load', ()=>{
 
                 for(let i = 0; i<=5; i++)
@@ -73,7 +73,7 @@
                 $('#frequency').on('input',(e)=>{frequencyToggle(e.target.value)});
                 $('#randomize').click(()=>{randomize()});
                 $('#sort').click(()=>{sort()});
-            });
+            });      //....................All event listener..........................//
         </script>
     </body>
 </html>
